@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="etcd,CA证书,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Hi,简单介绍下自己：  工作：在深圳工作6年，呆过平安科技，鹅厂，迅雷，下一站我也不知道会是哪里；伪程序员、半吊子架构师；面向工资工作；正确对待理想与现实；不毒鸡汤；坚持、不服输、自律、专注是我身上的特点；保持学习才能保持领先；学在别人玩的时候，你去学习收益最大，反馈也最大；工作需要多跳槽，技术才能进步；一个团队菜鸡一多，代表技术水平的低下，同时管理手段也趋近于原始，所以菜鸡多了，一切都说的通；">
-<meta name="keywords" content="编程 英语">
-<meta property="og:type" content="website">
-<meta property="og:title" content="about">
-<meta property="og:url" content="http://yoursite.com/about/index.html">
+<meta name="description" content="安装cfssl  12345wget https://pkg.cfssl.org/R1.2/cfssl_linux-amd64wget https://pkg.cfssl.org/R1.2/cfssljson_linux-amd64chmod +x cfssl_linux-amd64 cfssljson_linux-amd64mv cfssl_linux-amd64 /usr/local/bin">
+<meta name="keywords" content="etcd,CA证书">
+<meta property="og:type" content="article">
+<meta property="og:title" content="etcdv2 etcdv3(带证书)部署过程记录">
+<meta property="og:url" content="http://yoursite.com/2019/06/03/etcd部署/index.html">
 <meta property="og:site_name" content="captainJ">
-<meta property="og:description" content="Hi,简单介绍下自己：  工作：在深圳工作6年，呆过平安科技，鹅厂，迅雷，下一站我也不知道会是哪里；伪程序员、半吊子架构师；面向工资工作；正确对待理想与现实；不毒鸡汤；坚持、不服输、自律、专注是我身上的特点；保持学习才能保持领先；学在别人玩的时候，你去学习收益最大，反馈也最大；工作需要多跳槽，技术才能进步；一个团队菜鸡一多，代表技术水平的低下，同时管理手段也趋近于原始，所以菜鸡多了，一切都说的通；">
+<meta property="og:description" content="安装cfssl  12345wget https://pkg.cfssl.org/R1.2/cfssl_linux-amd64wget https://pkg.cfssl.org/R1.2/cfssljson_linux-amd64chmod +x cfssl_linux-amd64 cfssljson_linux-amd64mv cfssl_linux-amd64 /usr/local/bin">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-03T02:30:50.862Z">
+<meta property="og:updated_time" content="2019-06-03T02:54:54.664Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="about">
-<meta name="twitter:description" content="Hi,简单介绍下自己：  工作：在深圳工作6年，呆过平安科技，鹅厂，迅雷，下一站我也不知道会是哪里；伪程序员、半吊子架构师；面向工资工作；正确对待理想与现实；不毒鸡汤；坚持、不服输、自律、专注是我身上的特点；保持学习才能保持领先；学在别人玩的时候，你去学习收益最大，反馈也最大；工作需要多跳槽，技术才能进步；一个团队菜鸡一多，代表技术水平的低下，同时管理手段也趋近于原始，所以菜鸡多了，一切都说的通；">
+<meta name="twitter:title" content="etcdv2 etcdv3(带证书)部署过程记录">
+<meta name="twitter:description" content="安装cfssl  12345wget https://pkg.cfssl.org/R1.2/cfssl_linux-amd64wget https://pkg.cfssl.org/R1.2/cfssljson_linux-amd64chmod +x cfssl_linux-amd64 cfssljson_linux-amd64mv cfssl_linux-amd64 /usr/local/bin">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/about/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/03/etcd部署/">
 
 
 
 
 
-  <title>about | captainJ</title>
+  <title>etcdv2 etcdv3(带证书)部署过程记录 | captainJ</title>
   
 
 
@@ -283,37 +283,240 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/03/etcd部署/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="captainJ">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="captainJ">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">about</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <p>Hi,简单介绍下自己：</p>
-<ul>
-<li>工作：<br>在深圳工作6年，呆过平安科技，鹅厂，迅雷，下一站我也不知道会是哪里；<br>伪程序员、半吊子架构师；<br>面向工资工作；<br>正确对待理想与现实；<br>不毒鸡汤；<br>坚持、不服输、自律、专注是我身上的特点；<br>保持学习才能保持领先；<br>学在别人玩的时候，你去学习收益最大，反馈也最大；<br>工作需要多跳槽，技术才能进步；<br>一个团队菜鸡一多，代表技术水平的低下，同时管理手段也趋近于原始，所以菜鸡多了，一切都说的通；<br>程序员先做10年一线，再谈架构，再谈管理；<br>一线、二线的工作方式是2个层面的东西，所以避免和二线的人谈职业发展，毫无意义；</li>
+          <h1 class="post-title" itemprop="name headline">etcdv2 etcdv3(带证书)部署过程记录</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-03T10:53:50+08:00">
+                2019-06-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/kubernetes-etcd/" itemprop="url" rel="index">
+                    <span itemprop="name">kubernetes etcd</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  917
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li>安装cfssl</li>
 </ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">wget https://pkg.cfssl.org/R1.2/cfssl_linux-amd64</span><br><span class="line">wget https://pkg.cfssl.org/R1.2/cfssljson_linux-amd64</span><br><span class="line">chmod +x cfssl_linux-amd64 cfssljson_linux-amd64</span><br><span class="line">mv cfssl_linux-amd64 /usr/local/bin/cfssl</span><br><span class="line">mv cfssljson_linux-amd64 /usr/local/bin/cfssljson</span><br></pre></td></tr></table></figure>
 
-        
-      </div>
-      
-      
+<ul>
+<li><p>创建CA</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># cfssl print-defaults config &gt; ca-config.json</span><br><span class="line"></span><br><span class="line"># cfssl print-defaults csr &gt; ca-csr.json</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改ca-config.json为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;signing&quot;: &#123;</span><br><span class="line">        &quot;default&quot;: &#123;</span><br><span class="line">            &quot;expiry&quot;: &quot;8760h&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;profiles&quot;: &#123;</span><br><span class="line">            &quot;kubernetes&quot;: &#123;</span><br><span class="line">                &quot;expiry&quot;: &quot;8760h&quot;,</span><br><span class="line">                &quot;usages&quot;: [</span><br><span class="line">                    &quot;signing&quot;,</span><br><span class="line">                    &quot;key encipherment&quot;,</span><br><span class="line">                    &quot;server auth&quot;,</span><br><span class="line">                    &quot;client auth&quot;</span><br><span class="line">                ]</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;   //修改过期时间为一年</span><br><span class="line">server auth表示client可以用该ca对server提供的证书进行验证</span><br><span class="line">client auth表示server可以用该ca对client提供的证书进行验证</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改ca-csr.json</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;CN&quot;: &quot;kubernetes&quot;,</span><br><span class="line">    &quot;key&quot;: &#123;</span><br><span class="line">        &quot;algo&quot;: &quot;rsa&quot;,</span><br><span class="line">        &quot;size&quot;: 2048</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;names&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;C&quot;: &quot;CN&quot;,</span><br><span class="line">            &quot;L&quot;: &quot;shenzhen&quot;,</span><br><span class="line">            &quot;ST&quot;: &quot;guangdong&quot;,</span><br><span class="line">            &quot;O&quot;: &quot;k8s&quot;,</span><br><span class="line">            &quot;OU&quot;: &quot;System&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>生成CA证书和私钥</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># cfssl gencert -initca ca-csr.json | cfssljson -bare ca</span><br><span class="line"># ls ca*</span><br><span class="line">ca-config.json ca.csr ca-csr.json ca-key.pem ca.pem</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>创建etcd证书</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">  #cat kubernetes-csr.json</span><br><span class="line">  &#123;</span><br><span class="line">      &quot;CN&quot;: &quot;kubernetes&quot;,</span><br><span class="line">      &quot;hosts&quot;: [</span><br><span class="line">          &quot;127.0.0.1&quot;,</span><br><span class="line">          &quot;192.168.10.109&quot;,</span><br><span class="line">          &quot;192.168.10.110&quot;,</span><br><span class="line">          &quot;192.168.10.111&quot;</span><br><span class="line">      ],</span><br><span class="line">      &quot;key&quot;: &#123;</span><br><span class="line">          &quot;algo&quot;: &quot;rsa&quot;,</span><br><span class="line">          &quot;size&quot;: 2048</span><br><span class="line">      &#125;,</span><br><span class="line">      &quot;names&quot;: [</span><br><span class="line">          &#123;</span><br><span class="line">          &quot;C&quot;: &quot;CN&quot;,</span><br><span class="line">          &quot;ST&quot;: &quot;guangdong&quot;,</span><br><span class="line">          &quot;L&quot;: &quot;shenzhen&quot;,</span><br><span class="line">          &quot;O&quot;: &quot;k8s&quot;,</span><br><span class="line">          &quot;OU&quot;: &quot;System&quot;</span><br><span class="line">          &#125;</span><br><span class="line">      ]</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">生成证书的时候，如果是走阿里云的slb转发，需要加上slb的外网ip,比如：</span><br><span class="line">  &#123;</span><br><span class="line">      &quot;CN&quot;: &quot;kubernetes&quot;,</span><br><span class="line">      &quot;hosts&quot;: [</span><br><span class="line">          &quot;127.0.0.1&quot;,</span><br><span class="line">          &quot;192.168.10.109&quot;,</span><br><span class="line">          &quot;192.168.10.110&quot;,</span><br><span class="line">          &quot;192.168.10.111&quot;  //此处加，也可以加域名，用于通过域名代理访问</span><br><span class="line">      ],</span><br><span class="line">      &quot;key&quot;: &#123;</span><br><span class="line">          &quot;algo&quot;: &quot;rsa&quot;,</span><br><span class="line">          &quot;size&quot;: 2048</span><br><span class="line">      &#125;,</span><br><span class="line">      &quot;names&quot;: [</span><br><span class="line">          &#123;</span><br><span class="line">          &quot;C&quot;: &quot;CN&quot;,</span><br><span class="line">          &quot;ST&quot;: &quot;guangdong&quot;,</span><br><span class="line">          &quot;L&quot;: &quot;shenzhen&quot;,</span><br><span class="line">          &quot;O&quot;: &quot;k8s&quot;,</span><br><span class="line">          &quot;OU&quot;: &quot;System&quot;</span><br><span class="line">          &#125;</span><br><span class="line">      ]</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  -------------------------------------------</span><br><span class="line">   #cfssl gencert -ca=ca.pem -ca-key=ca-key.pem -config=ca-config.json -profile=kubernetes kubernetes-csr.json | cfssljson -bare etcd  //生成etcd证书</span><br><span class="line">   需要注意的是profile 必须得是kubernetes</span><br><span class="line"></span><br><span class="line">   [root@test1 certs]# ll etcd*</span><br><span class="line">  -rw-r--r-- 1 root root 1074 May 30 13:18 etcd.csr</span><br><span class="line">  -rw------- 1 root root 1675 May 30 13:18 etcd-key.pem</span><br><span class="line">  -rw-r--r-- 1 root root 1452 May 30 13:18 etcd.pem</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>etcdv3带证书：</p>
+</li>
+</ul>
+<p>centos 7下服务配置文件如下：<br>$ cat /usr/lib/systemd/system/etcd.service</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Etcd Server</span><br><span class="line">After=network.target</span><br><span class="line">After=network-online.target</span><br><span class="line">Wants=network-online.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=notify</span><br><span class="line">EnvironmentFile=-/usr/local/etcd/conf/etcd.conf</span><br><span class="line">ExecStart=/usr/local/etcd/bin/etcd \</span><br><span class="line">--name=$&#123;ETCD_NAME&#125; \</span><br><span class="line">--data-dir=$&#123;ETCD_DATA_DIR&#125; \</span><br><span class="line">--listen-peer-urls=$&#123;ETCD_LISTEN_PEER_URLS&#125; \</span><br><span class="line">--listen-client-urls=$&#123;ETCD_LISTEN_CLIENT_URLS&#125;,http://127.0.0.1:2379 \</span><br><span class="line">--advertise-client-urls=$&#123;ETCD_ADVERTISE_CLIENT_URLS&#125; \</span><br><span class="line">--initial-advertise-peer-urls=$&#123;ETCD_INITIAL_ADVERTISE_PEER_URLS&#125; \</span><br><span class="line">--initial-cluster=$&#123;ETCD_INITIAL_CLUSTER&#125; \</span><br><span class="line">--initial-cluster-token=$&#123;ETCD_INITIAL_CLUSTER&#125; \</span><br><span class="line">--initial-cluster-state=new \</span><br><span class="line">--cert-file=/usr/local/etcd/certs/etcd.pem \</span><br><span class="line">--key-file=/usr/local/etcd/certs/etcd-key.pem \</span><br><span class="line">--peer-cert-file=/usr/local/etcd/certs/etcd.pem \</span><br><span class="line">--peer-key-file=/usr/local/etcd/certs/etcd-key.pem \</span><br><span class="line">--trusted-ca-file=/usr/local/etcd/certs/ca.pem \</span><br><span class="line">--peer-trusted-ca-file=/usr/local/etcd/certs/ca.pem</span><br><span class="line">Restart=on-failure</span><br><span class="line">LimitNOFILE=65536</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>etcdv3变量定义<br>cat  /usr/local/etcd/conf/etcd.conf    //etcdv3的配置文件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#[Member]</span><br><span class="line">ETCD_NAME=test1</span><br><span class="line">ETCD_DATA_DIR=&quot;/data/etcd&quot;</span><br><span class="line">ETCD_LISTEN_PEER_URLS=&quot;https://192.168.10.109:2380&quot;</span><br><span class="line">ETCD_LISTEN_CLIENT_URLS=&quot;https://192.168.10.109:2379&quot;</span><br><span class="line"></span><br><span class="line">#[Clustering]</span><br><span class="line">ETCD_INITIAL_ADVERTISE_PEER_URLS=&quot;https://192.168.10.109:2380&quot;</span><br><span class="line">ETCD_ADVERTISE_CLIENT_URLS=&quot;https://192.168.10.109:2379&quot;</span><br><span class="line">ETCD_INITIAL_CLUSTER=&quot;test1=https://192.168.10.109:2380,test2=https://192.168.10.110:2380,test3=https://192.168.10.111:2380&quot;</span><br><span class="line">ETCD_INITIAL_CLUSTER_TOKEN=&quot;gcp-test-etcdv3&quot;</span><br><span class="line">ETCD_INITIAL_CLUSTER_STATE=&quot;new&quot;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>etcdv2配置：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./etcd -name gcp01022 -initial-advertise-peer-urls http://192.168.10.99:2480 -data-dir /data/etcd_2.0/data -listen-peer-urls http://192.168.10.99:2480 -listen-client-urls http://192.168.10.99:2479,http://127.0.0.1:2479 -advertise-client-urls http://192.168.10.99:2479 -initial-cluster gcp01024=http://192.168.10.24:2480,gcp01023=http://192.168.10.23:2480,gcp01022=http://192.168.10.99:2480 -initial-cluster-token gcp-etcdv2 -initial-cluster-state new</span><br></pre></td></tr></table></figure>
+
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/etcd/" rel="tag"># etcd</a>
+          
+            <a href="/tags/CA证书/" rel="tag"># CA证书</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/31/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
